@@ -39,7 +39,7 @@ def hello():
 @app.route('/weather/<city>/<country>')
 def changeroute(city, country):
     print(f"Get weather report for city:{city} and country:{country}")
-    result = weatherAPI(heads, legs)
+    result = weatherAPI(city, country)
     return result
     
 
