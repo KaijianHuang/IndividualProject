@@ -1,25 +1,45 @@
 from flask import Flask
 from flask import jsonify
+import requests
+from datetime import datetime
 app = Flask(__name__)
 
-def chicken_rabbit_cage(heads, legs):
-    for rabbit in range(heads + 1):
-        chicken = heads - rabbit
-        if 2 * chicken + 4 * rabbit == legs:
-            return [{'chicken':chicken}, {'rabbit':rabbit}]
-    return [{'chicken':-1}, {'rabbit':-1}]
+def weatherAPI(city, country):
+    """
+    Gets the current weather conditions for a given city and country using the weatherapi.com API.
+    
+    Parameters:
+        city (str): The name of the city.
+        country (str): The name of the country.
+    
+    Returns:
+        A dictionary representing the current weather conditions for the given location.
+    """
+    # Enter your API key here
+    api_key = "1519edbf82994ba980874948231502"
+    
+    # Send a request to the weatherapi.com API to get the current weather conditions
+    response = requests.get(f"http://api.weatherapi.com/v1/current.json?key={api_key}&q={city},{country}")
+    
+    # Check if the request was successful and the response status code is 200 (OK)
+    if response.status_code == 200:
+        # Parse the JSON response into a dictionary and return it
+        return response.json()
+    else:
+        # If the request was not successful, print an error message and return None
+        print(f"Error getting weather data: {response.status_code}")
+        return None
 
 
 @app.route('/')
 def hello():
-    print("I am an Automatic chicken_rabbit_cage problem solving Machine")
-    return 'Hello Automatic chicken_rabbit_cage problem solving Machine! Please use it to solve chicken-rabbit-cage problem at route by typing: /chicken_rabbit_cage/x/y (x is heads and y is legs)'
+    print("I am an Automatic weather report Machine")
+    return 'Hello Automatic weather report Machine! Please use it to get the weather report at route by typing: /weather/city/country'
 
 @app.route('/chicken_rabbit_cage/<heads>/<legs>')
-def changeroute(heads, legs):
-    print(f"Solve chicken_rabbit_problems for heads:{heads} and legs:{legs}")
-
-    result = chicken_rabbit_cage(int(heads), int(legs))
+def changeroute(city, country):
+    print(f"Get weather report for city:{city} and country:{country}")
+    result = weatherAPI(heads, legs)
     return jsonify(result)
     
 
