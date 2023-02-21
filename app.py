@@ -36,11 +36,11 @@ def hello():
     print("I am an Automatic weather report Machine")
     return 'Hello Automatic weather report Machine! Please use it to get the weather report at route by typing: /weather/city/country'
 
-@app.route('/chicken_rabbit_cage/<heads>/<legs>')
+@app.route('/weather/<city>/<country>')
 def changeroute(city, country):
     print(f"Get weather report for city:{city} and country:{country}")
     result = weatherAPI(heads, legs)
-    return jsonify(result)
+    return result
     
 
 if __name__ == '__main__':
