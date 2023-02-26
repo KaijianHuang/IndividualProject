@@ -1,8 +1,11 @@
-#WeatherAPI Program
+Project Description
+The Automatic Weather Report Machine is a Flask web application that provides current weather conditions for a given city and country using the weatherapi.com API. Users can access the application by visiting /weather/<city>/<country> and the application returns a JSON response with the current weather conditions for the specified location. The project is built using Python Flask and is deployed on a server.
 
-This program is a simple python program that fetches the current weather data for a specified location using the WeatherAPI service. The user inputs the city name and country code, and the program makes a request to the WeatherAPI service to get the current weather data for that location.
-
-Prerequisites
-To run this program, you need to have python installed on your system. You also need to sign up for a free API key on the WeatherAPI website in order to use their service.
-
-
+Features
+Provides current weather conditions for any city and country
+Uses the weatherapi.com API to get weather data
+Built using Python Flask
+Returns a JSON response with the current weather conditions
+Technologies Used
+Python Flask
+weatherapi.com API
